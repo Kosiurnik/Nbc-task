@@ -14,8 +14,8 @@ public class AggresiveInvestment extends Investment {
     public Map<FundType, Integer> getPercentages() {
         Map<FundType, Integer> percentages = new HashMap<>();
 
-        percentages.put(FundType.POLISH, 30);
-        percentages.put(FundType.FOREIGN, 30);
+        percentages.put(FundType.POLISH, 20);
+        percentages.put(FundType.FOREIGN, 40);
         percentages.put(FundType.MONETARY, 40);
 
         return percentages;

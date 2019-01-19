@@ -15,8 +15,8 @@ public class DividedInvestment extends Investment {
     public Map<FundType, Integer> getPercentages() {
         Map<FundType, Integer> percentages = new HashMap<>();
 
-        percentages.put(FundType.POLISH, 90);
-        percentages.put(FundType.MONETARY, 10);
+        percentages.put(FundType.POLISH, 70);
+        percentages.put(FundType.MONETARY, 30);
 
         return percentages;
     }

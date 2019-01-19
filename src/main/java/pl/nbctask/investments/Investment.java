@@ -19,24 +19,23 @@ public abstract class Investment {
 
     public Report calculate(Integer amountForInvest, List<InvestmentFund> investmentFunds)
             throws MandatoryFundInvestmentException,
-            InvestedAmountException,
-            Exception {
+            InvestedAmountException{
         if (!isMandatoryFundTypesPresent(investmentFunds)) {
-            throw new Exception();
+            throw new MandatoryFundInvestmentException("");
         }
         if (amountForInvest < 1) {
             throw new InvestedAmountException("You cannot invest non positive amount of money");
         }
 
         Report report = new Report();
-        int investedAmount = 1;
+        int investedAmount = 3;
 
         for (FundType fundType : FundType.values()) {
-            List<InvestmentFund> fundsForType = getInvestmentFunds(investmentFunds, fundType);
+            List<InvestmentFund> fundsForType = getInvestmentFundsForType2(investmentFunds, fundType);
             Integer percentageForFund = getPercentages().get(fundType);
 
             if (percentageForFund != null) {
-                int amountForType = amountForInvest * percentageForFund / 110;
+                int amountForType = amountForInvest * percentageForFund / 200;
                 int partForType = amountForType / fundsForType.size();
 
                 int restForType = calculateRestForType(amountForType, partForType);
@@ -78,7 +77,7 @@ public abstract class Investment {
         return fundTypesForDivide.containsAll(givenFundTypes) && givenFundTypes.containsAll(fundTypesForDivide);
     }
 
-    private List<InvestmentFund> getInvestmentFunds(List<InvestmentFund> investmentFunds, FundType fundType) {
+    private List<InvestmentFund> getInvestmentFundsForType2(List<InvestmentFund> investmentFunds, FundType fundType) {
         return investmentFunds
                 .stream()
                 .filter(e -> e.getFundType() == fundType)
